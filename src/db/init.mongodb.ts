@@ -1,5 +1,9 @@
 import mongoose from 'mongoose'
-const connectString = 'mongodb://localhost:27017/shop'
+import configMongodb from '../config/config.mongodb'
+const {
+    database: { host, name, port }
+} = configMongodb
+const connectString = `mongodb://${host}:${port}/${name}`
 
 class Database {
     private static instance: Database | null = null
@@ -13,7 +17,7 @@ class Database {
         mongoose
             .connect(connectString)
             .then(() => console.log('Connected MongoDB Success'))
-            .catch((err) => console.log('Error Connect!'))
+            .catch((err) => console.log('Error Connect!', err))
     }
     static getInstance(): Database {
         if (!Database.instance) {
