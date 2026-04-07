@@ -2,10 +2,10 @@
   "compilerOptions": {
     // build
     "target": "es2020",
-    "module": "esnext",
+    "module": "NodeNext",
     "outDir": "dist",
     "rootDir": ".",
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
 
     // type
     "strict": true,
@@ -14,5 +14,6 @@
 
     // utils
     "esModuleInterop": true,
+    "rewriteRelativeImportExtensions": true
   }
 }
