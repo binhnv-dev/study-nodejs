@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import configMongodb from '../config/config.mongodb'
+import configMongodb from '../config/config.mongodb.ts'
 const {
     database: { host, name, port }
 } = configMongodb

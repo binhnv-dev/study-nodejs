@@ -3,7 +3,7 @@ import express from 'express'
 import morgan from 'morgan'
 import helmet from 'helmet'
 import compression from 'compression'
-
+import rootRouter from './routes/index.ts'
 dotenv.config()
 
 const app = express()
@@ -12,14 +12,12 @@ const app = express()
 app.use(morgan('dev'))
 app.use(helmet())
 app.use(compression())
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 // 2. init db
-import './db/init.mongodb'
+import './db/init.mongodb.ts'
 
 // 3. init router
-app.get('/', (req, res, next) => {
-    return res.status(200).json({
-        message: 'Hello world!!!'
-    })
-})
+app.use('/', rootRouter)
 export default app

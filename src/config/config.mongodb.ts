@@ -20,7 +20,7 @@ const production = {
     }
 }
 
-const env: keyof typeof config = process.env.NODE_ENV ? 'production' : 'development'
 const config = { development, production }
+const env: keyof typeof config = process.env.NODE_ENV ? 'production' : 'development'
 
 export default config[env]
