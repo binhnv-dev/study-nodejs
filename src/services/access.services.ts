@@ -48,7 +48,7 @@ export const signUpService = async ({ name, email, password }: ISignUpServiceInp
             }
 
             // create token
-            const tokens = tokenHandler({ payload: { userID: newUser._id, email }, publicKey, privateKey })
+            const tokens = await tokenHandler({ payload: { userID: newUser._id, email }, publicKey, privateKey })
             console.log('create token success', tokens)
 
             return {

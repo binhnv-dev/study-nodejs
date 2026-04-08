@@ -13,7 +13,6 @@ class Database {
 
     connect() {
         mongoose.set('debug', { color: true })
-
         mongoose
             .connect(connectString)
             .then(() => console.log('Connected MongoDB Success'))

@@ -3,6 +3,6 @@ import { signUpController } from '../../controllers/access.controller.ts'
 
 const signUpRouter = express.Router()
 
-signUpRouter.post('/shop/signup', signUpController)
+signUpRouter.post('/user/signup', signUpController)
 
 export default signUpRouter

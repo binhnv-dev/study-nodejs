@@ -6,22 +6,17 @@ type ITokenHandlerInput = {
 }
 export const tokenHandler = async ({ payload, publicKey, privateKey }: ITokenHandlerInput) => {
     try {
-        const accessToken = JWT.sign(payload, privateKey, {
+        const accessToken = JWT.sign(payload, publicKey, {
             expiresIn: '2 days'
         })
-        const refreshToken = JWT.sign(payload, privateKey, {
+        const refreshToken = JWT.sign(payload, publicKey, {
             expiresIn: '7 days'
         })
 
-        JWT.verify(accessToken, publicKey, (err, decode) => {
-            if (err) {
-                console.error('error', err)
-            } else {
-                console.log('decode verify: ', decode)
-            }
-        })
+        const decode = JWT.verify(accessToken, publicKey)
+        console.log('decode', decode)
         return { accessToken, refreshToken }
     } catch (error) {
-        return error
+        throw error
     }
 }
