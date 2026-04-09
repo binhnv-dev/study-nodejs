@@ -25,4 +25,4 @@ const keySchema = new Schema(
     { timestamps: true, collection: COLLECTION }
 )
 
-export const KeyModal = model(DOCUMENT_NAME, keySchema)
+export const KeyModel = model(DOCUMENT_NAME, keySchema)

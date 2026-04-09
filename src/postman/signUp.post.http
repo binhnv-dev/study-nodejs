@@ -1,0 +1,11 @@
+@url_dev=http://localhost:3000/v1/api
+
+POST {{url_dev}}/user/signup
+Content-Type: application/json
+x-api-key: 86,37,213,243
+
+{
+  "name": "Binh",
+  "email": "binh07@example.com",
+  "password": "123456"
+}

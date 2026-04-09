@@ -1,8 +1,8 @@
 import { ROLE, ROUND } from '../const/index.ts'
 import { UserModel } from '../models/user.model.ts'
 import bcrypt from 'bcrypt'
-import { keyStoreService } from './key-token.service.ts'
-import { tokenHandler } from '../auth/token.ts'
+import { saveKeyStoreService } from './token-key.service.ts'
+import { tokenHandler } from '../auth/auth-token-key.ts'
 import { getFieldsData } from '../helps/index.ts'
 
 const bytes = new Uint8Array(4)
@@ -38,7 +38,7 @@ export const signUpService = async ({ name, email, password }: ISignUpServiceInp
             const privateKey = crypto.getRandomValues(bytes).toString()
 
             // save privateKey & publicKey corresponding user
-            const keyStore = await keyStoreService({ userID: newUser._id, publicKey, privateKey })
+            const keyStore = await saveKeyStoreService({ userID: newUser._id, publicKey, privateKey })
 
             if (!keyStore) {
                 return {
